@@ -1,4 +1,4 @@
-//read more here
+// GOLANG factory patterns
 // https://www.sohamkamani.com/blog/golang/2018-06-20-golang-factory-patterns/
 package storage
 

@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	//Blocking channel - script will run until any routine is alive or we will get - deadlock!
+	//Blocking channel
 	quit := make(chan bool)
 
 	logger := log.GetInstance()
