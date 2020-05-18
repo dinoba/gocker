@@ -1,15 +1,26 @@
-gocker
+## gocker
 
 Collects logs from running docker containers and send it to storage (Elasticsearch 6.x && Kafka supported).
 
 ## Description
-App starts docker client and reads all running docker instances. 
-For each docker (if is not marked for skiping in config) new routine in started.
+App  gets info about active docker containers via API.   
+For each running cointainer (if is not marked for skiping in config) new go routine in started.
 
 Each routine:  
 Find log for assigned container (found in /var/lib/docker/containers + dockerid)  
+```go
+containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{})
+```  
 Use tail to fetch from each log.  
+
+```go
+func ReadLog(container Docker, logsChan chan storage.DockerLog) {
+```  
+
 Parse log and send via channel to storage.  
+```go
+logsChan <- parseLog(rawLog, container)
+``` 
 
 ## Usage
 ```bash
