@@ -29,10 +29,12 @@ func main() {
 	//st, err := storage.GetStorageHandler("KAFKA", kafkahost, topic)
 
 	col := collector.NewCollector(st, dockersToSkip)
+
 	err = col.CollectStats()
 	if err != nil {
 		logger.Fatal(err)
 		panic(err)
 	}
+
 	<-quit
 }
