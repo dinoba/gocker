@@ -1,0 +1,11 @@
+{
+    "storage": {
+          "elasticsearchhost":  "http://monitor.example.com:9200",
+          "kafkahost":  "staging2.example.com:9092",
+          "topic":  "examplelog" 
+    },
+    "skip":{
+          "dockers_to_skip": "storm,img-resize,traefik"
+    }
+
+}

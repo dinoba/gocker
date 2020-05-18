@@ -2,7 +2,6 @@ package storage
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/olivere/elastic"
@@ -35,29 +34,21 @@ func NewElasticsearchHandler(elasticSearchServer string, indexPrefix string) (*E
 }
 
 //Store save log to ES
-func (handler *ElasticsearchHandler) Store(log DockerLog) (errReturn error) {
+func (handler *ElasticsearchHandler) Store(log DockerLog) (err error) {
 	ctx := context.Background()
 	currentIndex := handler.prefix + "-" + time.Now().Format("2006-01-02")
 
 	if handler.latestI != currentIndex {
 		handler.latestI = currentIndex
-		_, err := handler.CreateIndex(handler.latestI).Do(ctx)
-		if err != nil {
-			fmt.Println(err)
-		} else {
-			fmt.Println("New index created ", handler.latestI)
-		}
+		_, err = handler.CreateIndex(handler.latestI).Do(ctx)
 	}
 
-	_, err := handler.Index().
+	_, err = handler.Index().
 		Index(handler.latestI).
 		Type("_doc").
 		BodyJson(log).
 		Refresh("true").
 		Do(ctx)
 
-	if err != nil {
-		errReturn = err
-	}
 	return
 }

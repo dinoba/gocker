@@ -11,11 +11,13 @@ type Handler interface {
 }
 
 type DockerLog struct {
+	Image    string `json:"image"`
 	HostIP   string `json:"hostip"`
 	HostName string `json:"hostname"`
-	Log      string `json:"log"`
+	LogText  string `json:"logtext"`
+	Status   string `json:"status"`
+	State    string `json:"state"`
 	Time     string `json:"time"`
-	Stream   int    `json:"stream"`
 }
 
 //StorageNotSupported error
@@ -28,6 +30,8 @@ func GetStorageHandler(storageType string, connectionString string, topic string
 	switch storageType {
 	case "ELASTICSEARCH":
 		return NewElasticsearchHandler(connectionString, topic)
+	case "KAFKA":
+		return NewKafkaHandler(connectionString, topic)
 	}
 	return nil, StorageNotSupported
 }
