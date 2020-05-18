@@ -26,6 +26,16 @@ check logs
 2020-05-18 17:15:45 [INFO] read docker log file /var/lib/docker/containers/d9789310fddb3d2c75c087d3ca68bfff4ae92166e5159b2dab0777a4f85e1bf3/d9789310fddb3d2c75c087d3ca68bfff4ae92166e5159b2dab0777a4f85e1bf3-json.log
 ```
 
+If you get errors like  
+```bash
+Error response from daemon: client version 1.41 is too new. Maximum supported API version is 1.40
+```
+Force API with following ENV variable
+
+```bash
+export DOCKER_API_VERSION='1.40'
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
