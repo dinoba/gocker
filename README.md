@@ -48,7 +48,7 @@ export DOCKER_API_VERSION='1.40'
 ```
 ## Elasticserach template
 
-Use this template storage/es-template.tpl for ES mappings
+Use storage/es-template.tpl template to define ES mappings
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
