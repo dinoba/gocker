@@ -46,7 +46,7 @@ Force API with following ENV variable
 ```bash
 export DOCKER_API_VERSION='1.40'
 ```
-## Elastichserach template
+## Elasticserach template
 
 Use this template storage/es-template.tpl for ES mappings
 
