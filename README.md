@@ -6,6 +6,7 @@ Collects logs from running docker containers and send it to storage (Elasticsear
 App  gets info about active docker containers via API.   
 For each running cointainer (if is not marked for skiping in config) new go routine in started.
 
+
 Each routine:  
 Find log for assigned container (found in /var/lib/docker/containers + dockerid)  
 ```go
