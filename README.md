@@ -1,11 +1,10 @@
 ## gocker
 
-Collects logs from running docker containers and send it to storage (Elasticsearch 6.x && Kafka supported).
+Gocker collects logs from running Docker containers and sends them to storage. It currently supports Elasticsearch 6.x and Kafka.
 
 ## Description
-App  gets info about active docker containers via API.   
-For each running cointainer (if is not marked for skiping in config) new go routine in started.
-
+The application retrieves information about active Docker containers using the Docker API.
+For each running container (unless explicitly marked for exclusion in the configuration), a new Go routine is spawned to handle log collection.
 
 Each routine:  
 Find log for assigned container (found in /var/lib/docker/containers + dockerid)  
