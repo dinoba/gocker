@@ -4,13 +4,12 @@ Gocker collects logs from running Docker containers and sends them to storage. I
 
 ## Description
 The application retrieves information about active Docker containers using the Docker API.
-For each running container (unless explicitly marked for exclusion in the configuration), a new Go routine is spawned to handle log collection.
-
-Each routine:  
-Find log for assigned container (found in /var/lib/docker/containers + dockerid)  
 ```go
 containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{})
 ```  
+For each running container (unless explicitly marked for exclusion in the configuration), a new Go routine is spawned to handle log collection.
+
+Each routine:  
 Use tail to fetch from each log.  
 
 ```go
